@@ -1,0 +1,16 @@
+:root[data-theme="dark"] {
+    --bg-background: #000;
+    --bg-primary: #111827;
+
+    --color-primary: #fff;
+    --color-svg: #fff;
+
+    --border-muted: #1f2937;
+}
+
+:root[data-theme="light"] {
+    --bg-background: #fff;
+
+    --color-primary: #000;
+    --color-svg: #fff;
+}
