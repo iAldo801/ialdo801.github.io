@@ -187,6 +187,7 @@ li {
     display: flex;
     justify-content: center;
     height: 80px;
+    overflow: hidden;
 }
 
 .nav-container {
