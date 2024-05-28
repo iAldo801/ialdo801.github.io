@@ -30,6 +30,41 @@ function playAudio() {
     });
 }
 
+document.addEventListener("DOMContentLoaded", playAudio);
+
+document.addEventListener("DOMContentLoaded", function () {
+    const testimonialJSON = '../assets/misc/testimonials.json';
+    const testimonialContainer = document.querySelector('.testimonial');
+
+    fetch(testimonialJSON)
+        .then(response => response.json())
+        .then(data => {
+            if (Array.isArray(data)) {
+                data.forEach(testimonial => {
+                    const testimonialElement = document.createElement('div');
+                    testimonialElement.classList.add('testimonial');
+
+                    const contentElement = document.createElement('p');
+                    contentElement.textContent = testimonial.testimonial;
+
+                    const authorElement = document.createElement('div');
+                    authorElement.classList.add('author');
+
+                    const authorText = document.createElement('p');
+                    authorText.textContent = `- ${testimonial.name} | ${testimonial.occupation}`;
+                    
+                    authorElement.appendChild(authorText);
+                    testimonialElement.appendChild(contentElement);
+                    testimonialElement.appendChild(authorElement);
+
+                    testimonialContainer.appendChild(testimonialElement);
+                });
+            } else {
+                console.error('Data is not an array');
+            }
+        });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll('.card');
 
@@ -45,5 +80,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-document.addEventListener("DOMContentLoaded", playAudio);

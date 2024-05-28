@@ -10,7 +10,7 @@
 body {
     background-color: var(--bg-background);
     color: var(--color-primary);
-    font-family: "Onest", sans-serif;
+    font-family: "Onest", sans-serif !important;
     font-optical-sizing: auto;
     trasnition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
     margin: 0;
@@ -32,6 +32,11 @@ a {
 
 li {
     list-style: none;
+}
+
+textarea {
+    font-family: "Onest", sans-serif !important;
+    resize: none;
 }
 
 ::-moz-selection {
@@ -375,4 +380,56 @@ li {
 
 .debug {
     border: 1px solid red;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.input-half {
+    width: calc(50% - 30px);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-half textarea {
+    background-color: var(--bg-primary);
+    flex: 1;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 80svh;
+    outline: none;
+    border: 1px solid var(--border-muted);
+    color: white;
+}
+
+.input-half input {
+    background-color: var(--bg-primary);
+    flex: 1;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-bottom: 80svh;
+    outline: none;
+    border: 1px solid var(--border-muted);
+    color: white;
+}
+
+input,
+textarea::placeholder {
+    color: #8a8a8a;
+}
+
+.input-half label {
+    font-size: 40px !important;
+    text-transform: uppercase;
+    font-weight: bolder;
+    padding-left: 0;
+    font-size: 16px;
 }
