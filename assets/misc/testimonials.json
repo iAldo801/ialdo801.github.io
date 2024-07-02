@@ -1,17 +1,14 @@
 [
   {
     "name": "Guayabita",
-    "occupation": "Java Freelancer",
-    "testimonial": "Aldo is a talented web developer with a keen eye for design.\nHe's always eager to learn new things and improve his skills.\nI've had the pleasure of working with him on several projects,\nand I'm always impressed by his creativity and dedication."
+    "social": "https://github.com/GuayabitaDev",
+    "occupation": "MC Plugin Dev & Friend",
+    "content": "Aldo's web development skills are truly outstanding, he has developed amazing pages with a clean and professional design in time and fashion without loosing a detail on the frontend for not only ease to make changes but making it easy for his customers to further develop over his work!"
   },
   {
-    "name": "Guayabita",
-    "occupation": "Java Freelancer",
-    "testimonial": "Aldo is a talented web developer with a keen eye for design.\nHe's always eager to learn new things and improve his skills.\nI've had the pleasure of working with him on several projects,\nand I'm always impressed by his creativity and dedication."
-  },
-  {
-    "name": "Guayabita",
-    "occupation": "Java Freelancer",
-    "testimonial": "Aldo is a talented web developer with a keen eye for design.\nHe's always eager to learn new things and improve his skills.\nI've had the pleasure of working with him on several projects,\nand I'm always impressed by his creativity and dedication."
+    "name": "Alewito",
+    "social": "",
+    "occupation": "Friend",
+    "content": "Aldo is a great friend and a great developer, he has helped me a lot with my projects and has always been there for me, he is a great person and a great developer, I recommend him 100%."
   }
 ]

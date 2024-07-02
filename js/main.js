@@ -1,82 +1,115 @@
-function hideNavbar() {
-    const controls = document.querySelector('.nav-container');
-    const threshold = 95;
-
-    function handleScroll() {
-        const scrollPosition = window.scrollY;
-
-        if (scrollPosition > threshold) {
-            controls.style.opacity = '0';
-            controls.style.transform = 'translateY(-50px)';
-        } else {
-            controls.style.opacity = '1';
-            controls.style.transform = 'translateY(0)';
-        }
-    }
-
-    window.addEventListener('scroll', handleScroll);
-}
-
-document.addEventListener("DOMContentLoaded", hideNavbar);
-
-function playAudio() {
-    var navItems = document.querySelectorAll('.nav-item');
-
-    navItems.forEach(function (navItem) {
-        navItem.addEventListener('click', function () {
-            var audio = new Audio('../assets/audio/pop.mp3');
-            audio.play();
-        });
-    });
-}
-
-document.addEventListener("DOMContentLoaded", playAudio);
-
 document.addEventListener("DOMContentLoaded", function () {
-    const testimonialJSON = '../assets/misc/testimonials.json';
-    const testimonialContainer = document.querySelector('.testimonial');
+    const yearsSince = document.querySelector('#age');
 
-    fetch(testimonialJSON)
-        .then(response => response.json())
-        .then(data => {
-            if (Array.isArray(data)) {
-                data.forEach(testimonial => {
-                    const testimonialElement = document.createElement('div');
-                    testimonialElement.classList.add('testimonial');
+    const currentDate = new Date();
+    const startDate = new Date('April 3, 2007');
 
-                    const contentElement = document.createElement('p');
-                    contentElement.textContent = testimonial.testimonial;
+    const years = currentDate.getFullYear() - startDate.getFullYear();
 
-                    const authorElement = document.createElement('div');
-                    authorElement.classList.add('author');
+    yearsSince.textContent = `${years}-year-old`;
+});
 
-                    const authorText = document.createElement('p');
-                    authorText.textContent = `- ${testimonial.name} | ${testimonial.occupation}`;
-                    
-                    authorElement.appendChild(authorText);
-                    testimonialElement.appendChild(contentElement);
-                    testimonialElement.appendChild(authorElement);
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.getElementById("sidebar");
 
-                    testimonialContainer.appendChild(testimonialElement);
-                });
-            } else {
-                console.error('Data is not an array');
-            }
-        });
+    let isSidebarOpen = true;
+    sidebar.style.transform = "translateX(0)";
+
+    window.toggleSidebar = () => {
+        if (isSidebarOpen) {
+            sidebar.style.transform = "translateX(-100%)";
+        } else {
+            sidebar.style.transform = "translateX(0)";
+        }
+        isSidebarOpen = !isSidebarOpen;
+    };
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll('.card');
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
 
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            cards.forEach(c => {
-                if (c !== card) c.classList.add('not-hovered');
-            });
-        });
-
-        card.addEventListener('mouseleave', () => {
-            cards.forEach(c => c.classList.remove('not-hovered'));
+    sidebarItems.forEach(sidebarItem => {
+        sidebarItem.addEventListener('click', function () {
+            const audio = new Audio('../assets/audio/pop.mp3');
+            audio.play();
         });
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const applyHoverEffect = () => {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                cards.forEach(c => {
+                    if (c !== card) c.classList.add('not-hovered');
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                cards.forEach(c => c.classList.remove('not-hovered'));
+            });
+        });
+    };
+
+    fetch('../assets/misc/testimonials.json')
+        .then(response => response.json())
+        .then(data => {
+            const gridContainer = document.querySelector('.testimonial-grid');
+            if (data.length <= 2) {
+                gridContainer.classList.add('no-scrollbar');
+            }
+            if (data.length === 1) {
+                gridContainer.classList.add('single-card');
+            }
+
+            data.forEach(testimonial => {
+                const card = document.createElement('div');
+                card.classList.add('card', 'testimonial-card');
+
+                const cardHeader = document.createElement('div');
+                cardHeader.classList.add('card-header');
+
+                const userName = document.createElement('h1');
+                userName.id = 'testimonial-user';
+                userName.textContent = `${testimonial.name} - ${testimonial.occupation}`;
+                cardHeader.appendChild(userName);
+                if (testimonial.social) {
+                    userName.addEventListener('click', () => {
+                        window.open(testimonial.social, '_blank');
+                    });
+                    userName.style.cursor = 'pointer';
+                    userName.style.textDecoration = 'underline';
+                } else {
+                    userName.style.cursor = 'text';
+                    userName.style.textDecoration = 'none';
+                }
+                const cardContent = document.createElement('div');
+                cardContent.classList.add('card-content');
+
+                const contentContainer = document.createElement('div');
+                contentContainer.classList.add('content-container');
+
+                const content = document.createElement('div');
+                content.classList.add('content');
+
+                const testimonialText = document.createElement('blockquote');
+                testimonialText.id = 'testimonial';
+                testimonialText.textContent = testimonial.content;
+                content.appendChild(testimonialText);
+
+                contentContainer.appendChild(content);
+                cardContent.appendChild(contentContainer);
+
+                card.appendChild(cardHeader);
+                card.appendChild(cardContent);
+
+                gridContainer.appendChild(card);
+            });
+
+            applyHoverEffect();
+        })
+        .catch(error => {
+            console.error('Error fetching testimonials:', error);
+        });
 });
