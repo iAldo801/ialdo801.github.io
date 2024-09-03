@@ -9,22 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     yearsSince.textContent = `${years}-year-old`;
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const sidebar = document.getElementById("sidebar");
-
-    let isSidebarOpen = true;
-    sidebar.style.transform = "translateX(0)";
-
-    window.toggleSidebar = () => {
-        if (isSidebarOpen) {
-            sidebar.style.transform = "translateX(-100%)";
-        } else {
-            sidebar.style.transform = "translateX(0)";
-        }
-        isSidebarOpen = !isSidebarOpen;
-    };
-});
-
 document.addEventListener("DOMContentLoaded", function () {
     const sidebarItems = document.querySelectorAll('.sidebar-item');
 
@@ -36,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Testimonials
 document.addEventListener("DOMContentLoaded", function () {
     const applyHoverEffect = () => {
         const cards = document.querySelectorAll('.card');

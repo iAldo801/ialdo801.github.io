@@ -4,6 +4,7 @@
         <script src="./js/main.js"></script>
         <script src="./js/theme.js"></script>
         <script src="./js/tooltip.js"></script>
+        <script src="./js/random.js"></script>
         <link rel="stylesheet" href="./css/rootVariables.css" />
         <link rel="stylesheet" href="./css/styles.css" />
         <link rel="stylesheet" href="./css/responsive.css" />
@@ -24,36 +25,10 @@
     <body>
         <main class="root">
             <div class="sidebar-main-container">
-                <div class="sidebar-toggle">
-                    <div
-                        class="sidebar-toggle-button tooltip"
-                        onclick="toggleSidebar()"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        >
-                            <line x1="4" x2="20" y1="12" y2="12" />
-                            <line x1="4" x2="20" y1="6" y2="6" />
-                            <line x1="4" x2="20" y1="18" y2="18" />
-                        </svg>
-                        <div class="tooltip-content">Toggle Sidebar</div>
-                    </div>
-                </div>
                 <aside id="sidebar" class="sidebar-container">
                     <ul class="sidebar-items-container">
                         <div class="sidebar-brand-container">
-                            <div
-                                class="sidebar-brand tooltip"
-                                onclick="toggleSidebar()"
-                            >
+                            <div class="sidebar-brand tooltip">
                                 <img
                                     src="./assets/img/hero_image.jpg"
                                     alt="logo"
@@ -61,7 +36,7 @@
                                     height="40"
                                 />
                                 <div class="tooltip-content">
-                                    Toggle Sidebar
+                                    ialdo80
                                 </div>
                             </div>
                         </div>
@@ -85,7 +60,7 @@
                                         d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
                                     />
                                 </svg>
-                                <div class="tooltip-content">Home</div>
+                                <div class="tooltip-content">Home <kbd>H</kbd></div>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -115,7 +90,7 @@
                                     <path d="M21 9v2" />
                                     <path d="M3 14v1" />
                                 </svg>
-                                <div class="tooltip-content">Tools</div>
+                                <div class="tooltip-content">Tools <kbd>T</kbd></div>
                             </a>
                         </li>
                         <div class="horizontal-divider"></div>
@@ -124,7 +99,7 @@
                                 class="sidebar-item-link theme-changer"
                                 onclick="toggleTheme()"
                             ></div>
-                            <div class="tooltip-content">Toggle Theme</div>
+                            <div class="tooltip-content">Toggle Theme <kbd>C</kbd></div>
                         </li>
                     </ul>
                 </aside>
@@ -208,7 +183,6 @@
                         </div>
                     </div>
                 </article>
-
                 <div class="footer-container">
                     <footer class="footer">
                         <div class="footer-content">
