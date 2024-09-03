@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const yearsSince = document.querySelector('#age');
+    const yearsSince = document.getElementById('age');
 
     const currentDate = new Date();
     const startDate = new Date('April 3, 2007');
@@ -42,12 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
         cards.forEach(card => {
             card.addEventListener('mouseenter', () => {
                 cards.forEach(c => {
-                    if (c !== card) c.classList.add('not-hovered');
+                    if (c !== card) c.classList.add('hovered');
                 });
             });
 
             card.addEventListener('mouseleave', () => {
-                cards.forEach(c => c.classList.remove('not-hovered'));
+                cards.forEach(c => c.classList.remove('hovered'));
             });
         });
     };
